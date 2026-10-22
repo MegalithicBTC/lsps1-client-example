@@ -1,0 +1,46 @@
+[package]
+name = "megalith_lsps1"
+version = "0.1.0"
+edition = "2021"
+default-run = "megalith_lsps1"
+
+[lib]
+name = "megalith_lsps1"
+path = "src/lib.rs"
+
+[[bin]]
+name = "get_info"
+path = "src/bin/get_info.rs"
+
+[[bin]]
+name = "order_status"
+path = "src/bin/order_status.rs"
+
+[[bin]]
+name = "node_info"
+path = "src/bin/node_info.rs"
+
+[[bin]]
+name = "make_invoice"
+path = "src/bin/make_invoice.rs"
+
+[[bin]]
+name = "pay_invoice"
+path = "src/bin/pay_invoice.rs"
+
+[[bin]]
+name = "sweep_onchain"
+path = "src/bin/sweep_onchain.rs"
+
+[[bin]]
+name = "close_and_sweep"
+path = "src/bin/close_and_sweep.rs"
+
+[dependencies]
+ldk-node = "0.7.1"
+ctrlc = "3.4"
+dotenvy = "0.15"
+# LSPS1 over HTTPS (src/lsps1.rs). ldk-node already pulls in reqwest with rustls.
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
